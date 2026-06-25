@@ -23,14 +23,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiapiclient "github.com/GIT_USER_ID/github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
 )
 
 func main() {
 	requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiapiclient.NewConfiguration()
+	apiClient := samiapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ChatAPI.AdapterChat(context.Background()).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ChatAPI.AdapterChat``: %v\n", err)

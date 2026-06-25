@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiapiclient "github.com/GIT_USER_ID/github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
 )
 
 func Test_sami_firewall_client_ChatAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiapiclient.NewConfiguration()
+	apiClient := samiapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ChatAPIService AdapterChat", func(t *testing.T) {
 
