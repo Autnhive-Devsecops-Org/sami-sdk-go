@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	samiapiclient "github.com/GIT_USER_ID/github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
+	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
 )
 
 func Test_sami_firewall_client_DefaultAPIService(t *testing.T) {

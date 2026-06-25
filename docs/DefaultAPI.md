@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	samiapiclient "github.com/GIT_USER_ID/github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
+	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
 )
 
 func main() {
@@ -88,7 +88,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	samiapiclient "github.com/GIT_USER_ID/github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
+	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go.git"
 )
 
 func main() {
