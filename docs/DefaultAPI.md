@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
