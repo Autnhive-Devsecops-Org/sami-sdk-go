@@ -28,16 +28,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
 	docId := "docId_example" // string | Document ID
-	quarantineReviewRequest := *openapiclient.NewQuarantineReviewRequest() // QuarantineReviewRequest | 
+	quarantineReviewRequest := *samiclient.NewQuarantineReviewRequest() // QuarantineReviewRequest | 
 	authorization := "authorization_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.SAMIAPI.ApproveQuarantineDoc(context.Background(), docId).QuarantineReviewRequest(quarantineReviewRequest).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SAMIAPI.ApproveQuarantineDoc``: %v\n", err)
@@ -100,14 +100,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
 	authorization := "authorization_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.SAMIAPI.IngestCommit(context.Background()).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SAMIAPI.IngestCommit``: %v\n", err)
@@ -164,16 +164,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
 	source := "source_example" // string |  (optional) (default to "static_docs")
 	authorization := "authorization_example" // string |  (optional)
-	ingestSyncRequest := *openapiclient.NewIngestSyncRequest() // IngestSyncRequest |  (optional)
+	ingestSyncRequest := *samiclient.NewIngestSyncRequest() // IngestSyncRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.SAMIAPI.IngestSync(context.Background()).Source(source).Authorization(authorization).IngestSyncRequest(ingestSyncRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SAMIAPI.IngestSync``: %v\n", err)
@@ -234,16 +234,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
 	docId := "docId_example" // string | Document ID
-	quarantineReviewRequest := *openapiclient.NewQuarantineReviewRequest() // QuarantineReviewRequest | 
+	quarantineReviewRequest := *samiclient.NewQuarantineReviewRequest() // QuarantineReviewRequest | 
 	authorization := "authorization_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.SAMIAPI.RejectQuarantineDoc(context.Background(), docId).QuarantineReviewRequest(quarantineReviewRequest).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SAMIAPI.RejectQuarantineDoc``: %v\n", err)

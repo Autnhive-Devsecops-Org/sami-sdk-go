@@ -23,16 +23,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
-	defendRequestModel := *openapiclient.NewDefendRequestModel("Query_example", []string{"Documents_example"}) // DefendRequestModel | 
+	defendRequestModel := *samiclient.NewDefendRequestModel("Query_example", []string{"Documents_example"}) // DefendRequestModel | 
 	xRequestId := "xRequestId_example" // string |  (optional)
 	xTenantId := "xTenantId_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.DEFENDERAPI.DefendV1DefendPost(context.Background()).DefendRequestModel(defendRequestModel).XRequestId(xRequestId).XTenantId(xTenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DEFENDERAPI.DefendV1DefendPost``: %v\n", err)

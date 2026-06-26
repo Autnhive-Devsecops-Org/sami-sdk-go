@@ -25,16 +25,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func main() {
-	ragQueryRequest := *openapiclient.NewRagQueryRequest("Query_example") // RagQueryRequest | 
+	ragQueryRequest := *samiclient.NewRagQueryRequest("Query_example") // RagQueryRequest | 
 	authorization := "authorization_example" // string |  (optional)
 	xRequestID := "xRequestID_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ORCHESTRATORAPI.RagQuery(context.Background()).RagQueryRequest(ragQueryRequest).Authorization(authorization).XRequestID(xRequestID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ORCHESTRATORAPI.RagQuery``: %v\n", err)

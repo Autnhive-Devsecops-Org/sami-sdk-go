@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	samiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
 )
 
 func Test_sami_rag_client_SAMIAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := samiclient.NewConfiguration()
+	apiClient := samiclient.NewAPIClient(configuration)
 
 	t.Run("Test SAMIAPIService ApproveQuarantineDoc", func(t *testing.T) {
 
