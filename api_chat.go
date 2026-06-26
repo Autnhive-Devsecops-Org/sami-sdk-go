@@ -25,11 +25,11 @@ type ChatAPIService service
 type ApiAdapterChatRequest struct {
 	ctx context.Context
 	ApiService *ChatAPIService
-	requestBody *map[string]interface{}
+	chatCompletionRequest *ChatCompletionRequest
 }
 
-func (r ApiAdapterChatRequest) RequestBody(requestBody map[string]interface{}) ApiAdapterChatRequest {
-	r.requestBody = &requestBody
+func (r ApiAdapterChatRequest) ChatCompletionRequest(chatCompletionRequest ChatCompletionRequest) ApiAdapterChatRequest {
+	r.chatCompletionRequest = &chatCompletionRequest
 	return r
 }
 
@@ -70,8 +70,8 @@ func (a *ChatAPIService) AdapterChatExecute(r ApiAdapterChatRequest) (map[string
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestBody == nil {
-		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
+	if r.chatCompletionRequest == nil {
+		return localVarReturnValue, nil, reportError("chatCompletionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -92,7 +92,7 @@ func (a *ChatAPIService) AdapterChatExecute(r ApiAdapterChatRequest) (map[string
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.chatCompletionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

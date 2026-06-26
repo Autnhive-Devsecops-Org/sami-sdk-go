@@ -24,14 +24,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	signedUrlPayload := *samiapiclient.NewSignedUrlPayload([]samiapiclient.Job{*samiapiclient.NewJob("Id_example", "SignedUrl_example", "FileName_example", []string{"PolicyPacks_example"})}) // SignedUrlPayload | 
+	signedUrlPayload := *openapiclient.NewSignedUrlPayload([]openapiclient.Job{*openapiclient.NewJob("Id_example", "SignedUrl_example", "FileName_example", []string{"PolicyPacks_example"})}) // SignedUrlPayload | 
 
-	configuration := samiapiclient.NewConfiguration()
-	apiClient := samiapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.DefaultAPI.FileSanitization(context.Background()).SignedUrlPayload(signedUrlPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.FileSanitization``: %v\n", err)
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -103,8 +103,8 @@ func main() {
 	audio := os.NewFile(1234, "some_file") // *os.File | Audio upload (optional) (optional)
 	model := "model_example" // string | Optional model name (optional)
 
-	configuration := samiapiclient.NewConfiguration()
-	apiClient := samiapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.DefaultAPI.MultimodalChat(context.Background()).Prompt(prompt).Content(content).Text(text).Input(input).File(file).Docx(docx).Pdf(pdf).Image(image).Audio(audio).Model(model).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.MultimodalChat``: %v\n", err)
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## AdapterChat
 
-> map[string]interface{} AdapterChat(ctx).RequestBody(requestBody).Execute()
+> map[string]interface{} AdapterChat(ctx).ChatCompletionRequest(chatCompletionRequest).Execute()
 
 Firewall text chat endpoint
 
@@ -23,15 +23,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	samiapiclient "github.com/Autnhive-Devsecops-Org/sami-sdk-go"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | 
+	chatCompletionRequest := *openapiclient.NewChatCompletionRequest([]openapiclient.ChatMessage{*openapiclient.NewChatMessage("Role_example", "Content_example")}) // ChatCompletionRequest | 
 
-	configuration := samiapiclient.NewConfiguration()
-	apiClient := samiapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ChatAPI.AdapterChat(context.Background()).RequestBody(requestBody).Execute()
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ChatAPI.AdapterChat(context.Background()).ChatCompletionRequest(chatCompletionRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ChatAPI.AdapterChat``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiAdapterChatRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **map[string]interface{}** |  | 
+ **chatCompletionRequest** | [**ChatCompletionRequest**](ChatCompletionRequest.md) |  | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
