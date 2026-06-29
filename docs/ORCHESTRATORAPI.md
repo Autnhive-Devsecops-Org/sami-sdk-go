@@ -29,13 +29,21 @@ import (
 )
 
 func main() {
-	ragQueryRequest := *samiclient.NewRagQueryRequest("Query_example") // RagQueryRequest | 
-	authorization := "authorization_example" // string |  (optional)
-	xRequestID := "xRequestID_example" // string |  (optional)
+	// Build the request body. NewRagQueryRequest takes the required query;
+	// optional fields are set with the typed setters.
+	ragQueryRequest := *samiclient.NewRagQueryRequest("what is vulnerability") // RagQueryRequest |
+	ragQueryRequest.SetRetrieverBackend("weaviate")
+	ragQueryRequest.SetTopK(15)
+
+	// dummy token, replace with your API key
+	authorization := "Bearer sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX" // string |  (optional)
 
 	configuration := samiclient.NewConfiguration()
+	configuration.Servers = samiclient.ServerConfigurations{
+		{URL: "https://dev-sami.autnhive.net/rag-defender"},
+	}
 	apiClient := samiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ORCHESTRATORAPI.RagQuery(context.Background()).RagQueryRequest(ragQueryRequest).Authorization(authorization).XRequestID(xRequestID).Execute()
+	resp, r, err := apiClient.ORCHESTRATORAPI.RagQuery(context.Background()).RagQueryRequest(ragQueryRequest).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ORCHESTRATORAPI.RagQuery``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
