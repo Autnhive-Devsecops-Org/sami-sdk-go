@@ -87,7 +87,7 @@ No authorization required
 
 ## IngestCommit
 
-> IngestCommitResponse IngestCommit(ctx).Authorization(authorization).Execute()
+> IngestCommitResponse IngestCommit(ctx).Authorization(authorization).IngestCommitRequest(ingestCommitRequest).Execute()
 
 Data Ingestion
 
@@ -105,10 +105,11 @@ import (
 
 func main() {
 	authorization := "authorization_example" // string |  (optional)
+	ingestCommitRequest := *samiclient.NewIngestCommitRequest([]samiclient.IngestDocument{*samiclient.NewIngestDocument("Text_example")}) // IngestCommitRequest |  (optional)
 
 	configuration := samiclient.NewConfiguration()
 	apiClient := samiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SAMIAPI.IngestCommit(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.SAMIAPI.IngestCommit(context.Background()).Authorization(authorization).IngestCommitRequest(ingestCommitRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SAMIAPI.IngestCommit``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +131,7 @@ Other parameters are passed through a pointer to a apiIngestCommitRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string** |  | 
+ **ingestCommitRequest** | [**IngestCommitRequest**](IngestCommitRequest.md) |  | 
 
 ### Return type
 
@@ -141,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

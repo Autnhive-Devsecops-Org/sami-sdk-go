@@ -161,10 +161,16 @@ type ApiIngestCommitRequest struct {
 	ctx context.Context
 	ApiService *SAMIAPIService
 	authorization *string
+	ingestCommitRequest *IngestCommitRequest
 }
 
 func (r ApiIngestCommitRequest) Authorization(authorization string) ApiIngestCommitRequest {
 	r.authorization = &authorization
+	return r
+}
+
+func (r ApiIngestCommitRequest) IngestCommitRequest(ingestCommitRequest IngestCommitRequest) ApiIngestCommitRequest {
+	r.ingestCommitRequest = &ingestCommitRequest
 	return r
 }
 
@@ -207,7 +213,7 @@ func (a *SAMIAPIService) IngestCommitExecute(r ApiIngestCommitRequest) (*IngestC
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -226,6 +232,8 @@ func (a *SAMIAPIService) IngestCommitExecute(r ApiIngestCommitRequest) (*IngestC
 	if r.authorization != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "simple", "")
 	}
+	// body params
+	localVarPostBody = r.ingestCommitRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

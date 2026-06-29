@@ -49,8 +49,6 @@ type APIClient struct {
 
 	// API Services
 
-	DEFENDERAPI *DEFENDERAPIService
-
 	ORCHESTRATORAPI *ORCHESTRATORAPIService
 
 	SAMIAPI *SAMIAPIService
@@ -72,7 +70,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DEFENDERAPI = (*DEFENDERAPIService)(&c.common)
 	c.ORCHESTRATORAPI = (*ORCHESTRATORAPIService)(&c.common)
 	c.SAMIAPI = (*SAMIAPIService)(&c.common)
 
